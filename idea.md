@@ -37,3 +37,5 @@ Storage: Local or cloud file storage
 
 ## Expected Outcome
 The final system will convert static study materials into interactive learning materials, allowing students to learn quickly, test their knowledge, and track their learning progress with AI-powered assistance.
+
+
