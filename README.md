@@ -1,100 +1,119 @@
 # AI Study Assistant Platform
 
-A full-stack MERN web application that uses Google Gemini AI to help students study more effectively.
+🚀 **Live Demo:** [https://ai-study-assistant-sooty-seven.vercel.app](https://ai-study-assistant-sooty-seven.vercel.app)
 
-## Features
+🔗 **Backend API:** [https://ai-study-assistant-njeo.onrender.com](https://ai-study-assistant-njeo.onrender.com)
 
-- User registration and authentication (JWT)
-- Upload study materials (PDF/TXT)
-- AI-generated summaries using Google Gemini
-- AI-powered Q&A based on study content
-- Automatic quiz generation from materials
-- Subject-wise material organization
-- Progress tracking dashboard
-- Study history management
+## About the Project
+
+This is a full-stack web app I built for my SESD course project. The idea is simple — students (like us!) have tons of study material but not enough time to go through everything properly. So I thought, why not use AI to make studying easier?
+
+You can upload your notes or PDFs, and the app uses Google's Gemini AI to generate summaries, answer your questions about the material, and even create quizzes so you can test yourself. It also keeps track of your progress so you know where you stand.
+
+## What It Does
+
+- Sign up and log in to your account
+- Upload study materials (PDFs or just paste text)
+- Get AI-generated summaries of your notes
+- Ask questions about your material and get AI answers
+- Auto-generate quizzes from your content to test yourself
+- Organize everything by subject
+- Track your learning progress on the dashboard
+- View your study history
 
 ## Tech Stack
 
-- **Frontend:** React with React Router
-- **Backend:** Node.js with Express (OOP architecture)
-- **Database:** MongoDB with Mongoose
+- **Frontend:** React (with React Router for navigation)
+- **Backend:** Node.js + Express (using OOP pattern with classes)
+- **Database:** MongoDB (with Mongoose for schemas)
 - **AI:** Google Gemini API
-- **Auth:** JWT with bcrypt password hashing
+- **Authentication:** JWT tokens + bcrypt for passwords
+- **Deployment:** Vercel (frontend) + Render (backend)
 
-## Project Structure
+## How the Project is Structured
 
 ```
 ├── backend/
-│   ├── config/          # Database configuration
-│   ├── controllers/     # OOP controller classes
-│   ├── middleware/       # Auth middleware
-│   ├── models/          # Mongoose schemas
-│   ├── routes/          # Express routes
-│   ├── services/        # AI and file services
-│   └── server.js        # Entry point
+│   ├── config/          # DB connection setup
+│   ├── controllers/     # All the logic (OOP classes)
+│   ├── middleware/       # Auth, validation, error handling, logging
+│   ├── models/          # MongoDB schemas (User, Subject, Material, Quiz, Progress)
+│   ├── routes/          # API endpoints
+│   ├── services/        # Gemini AI service + file handling
+│   └── server.js        # Main server file
 ├── frontend/
-│   ├── public/          # Static files
+│   ├── public/
 │   └── src/
-│       ├── api/         # Axios config
-│       ├── components/  # Reusable components
-│       ├── context/     # Auth context
-│       └── pages/       # Page components
-└── Diagrams/            # UML diagrams
+│       ├── api/         # Axios setup for API calls
+│       ├── components/  # Navbar, PrivateRoute
+│       ├── context/     # Auth context (login state management)
+│       └── pages/       # All the pages (Dashboard, Materials, Quiz, etc.)
+├── Diagrams/            # UML diagrams from milestone 1
+└── README.md
 ```
 
-## Setup
+## How to Run Locally
 
-### Prerequisites
-- Node.js
-- MongoDB
-- Google Gemini API key
+### What You Need
+- Node.js installed
+- MongoDB running locally (or a MongoDB Atlas account)
+- A Google Gemini API key (free from aistudio.google.com)
 
-### Backend
+### Backend Setup
 ```bash
 cd backend
-cp .env.example .env    # Add your GEMINI_API_KEY and MONGODB_URI
+cp .env.example .env
+# Add your MongoDB URI and Gemini API key in .env
 npm install
 npm run dev
 ```
 
-### Frontend
+### Frontend Setup
 ```bash
 cd frontend
 npm install
 npm start
 ```
 
-The frontend runs on port 3000 and proxies API requests to port 5000.
+Frontend runs on `localhost:3000` and backend on `localhost:5000`. The proxy is already configured so API calls work automatically during development.
 
 ## API Endpoints
 
-### Auth
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
+### Authentication
+- `POST /api/auth/register` — Create a new account
+- `POST /api/auth/login` — Log in
+- `GET /api/auth/me` — Get logged-in user info
 
-### Materials
-- `GET /api/materials` - List all materials
-- `POST /api/materials` - Upload new material
-- `GET /api/materials/:id` - Get material details
-- `POST /api/materials/:id/summary` - Generate AI summary
-- `POST /api/materials/:id/ask` - Ask AI question
-- `DELETE /api/materials/:id` - Delete material
+### Study Materials
+- `GET /api/materials` — Get all your materials
+- `POST /api/materials` — Upload new material (file or text)
+- `GET /api/materials/:id` — View a specific material
+- `POST /api/materials/:id/summary` — Generate AI summary
+- `POST /api/materials/:id/ask` — Ask AI a question about it
+- `DELETE /api/materials/:id` — Delete a material
 
 ### Subjects
-- `GET /api/subjects` - List subjects
-- `POST /api/subjects` - Create subject
-- `PUT /api/subjects/:id` - Update subject
-- `DELETE /api/subjects/:id` - Delete subject
+- `GET /api/subjects` — List your subjects
+- `POST /api/subjects` — Create a subject
+- `PUT /api/subjects/:id` — Rename a subject
+- `DELETE /api/subjects/:id` — Delete a subject
 
 ### Quizzes
-- `POST /api/quizzes/generate/:materialId` - Generate quiz
-- `GET /api/quizzes` - List quizzes
-- `GET /api/quizzes/:id` - Get quiz
-- `POST /api/quizzes/:id/submit` - Submit quiz answers
-- `DELETE /api/quizzes/:id` - Delete quiz
+- `POST /api/quizzes/generate/:materialId` — Generate a quiz from material
+- `GET /api/quizzes` — List all your quizzes
+- `GET /api/quizzes/:id` — View a quiz
+- `POST /api/quizzes/:id/submit` — Submit your answers
+- `DELETE /api/quizzes/:id` — Delete a quiz
 
 ### Progress
-- `GET /api/progress` - Get learning progress
-- `GET /api/progress/stats` - Get dashboard stats
-- `PUT /api/progress/:materialId` - Update progress
+- `GET /api/progress` — See your learning progress
+- `GET /api/progress/stats` — Dashboard statistics
+- `PUT /api/progress/:materialId` — Update completion status
+
+## Diagrams
+
+All the UML diagrams (ER, Class, Sequence, Use Case) are in the `Diagrams/` folder and were created as part of Milestone 1.
+
+---
+
+Built as part of SESD coursework, 2nd Year
