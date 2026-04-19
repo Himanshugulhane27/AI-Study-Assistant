@@ -6,9 +6,9 @@
 
 ## About the Project
 
-This is a full-stack web app I built for my SESD course project. The idea is simple — students (like us!) have tons of study material but not enough time to go through everything properly. So I thought, why not use AI to make studying easier?
+This is a complete web application which I created as part of the SESD course project. My concept behind the creation of this app was very simple; we students have access to many materials to study but lack sufficient time to go through all that material properly. Therefore, the question that came into my mind was why not leverage the power of AI technology?
 
-You can upload your notes or PDFs, and the app uses Google's Gemini AI to generate summaries, answer your questions about the material, and even create quizzes so you can test yourself. It also keeps track of your progress so you know where you stand.
+All you need to do is upload your class material or notes and then the application will use AI, specifically Gemini AI by Google, to provide you with a summary, answers to your questions regarding the material, and quizzes.
 
 ## What It Does
 
