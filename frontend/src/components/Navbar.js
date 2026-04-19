@@ -29,6 +29,9 @@ const Navbar = () => {
         <Link to="/quizzes" className={isActive('/quizzes')}>
           <span>Quizzes</span>
         </Link>
+        <Link to="/history" className={isActive('/history')}>
+          <span>History</span>
+        </Link>
         <div className="nav-user">
           <span className="nav-user-name">{user?.name}</span>
           <button className="nav-link" onClick={logout}>Logout</button>

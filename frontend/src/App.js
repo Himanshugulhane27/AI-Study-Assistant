@@ -11,6 +11,7 @@ import MaterialDetail from './pages/MaterialDetail';
 import Subjects from './pages/Subjects';
 import Quizzes from './pages/Quizzes';
 import QuizAttempt from './pages/QuizAttempt';
+import StudyHistory from './pages/StudyHistory';
 
 const AppRoutes = () => {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ const AppRoutes = () => {
         <Route path="/subjects" element={<PrivateRoute><Subjects /></PrivateRoute>} />
         <Route path="/quizzes" element={<PrivateRoute><Quizzes /></PrivateRoute>} />
         <Route path="/quizzes/:id" element={<PrivateRoute><QuizAttempt /></PrivateRoute>} />
+        <Route path="/history" element={<PrivateRoute><StudyHistory /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
