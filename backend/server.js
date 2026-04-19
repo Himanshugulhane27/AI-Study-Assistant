@@ -43,8 +43,10 @@ app.use('/api/admin', adminRoutes);
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }));
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
-  app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')));
+  const buildPath = path.join(__dirname, '../frontend/build');
+  console.log('Serving static files from:', buildPath);
+  app.use(express.static(buildPath));
+  app.get(/^(?!\/api\/).*/, (req, res) => res.sendFile(path.join(buildPath, 'index.html')));
 }
 
 app.use(ErrorHandler.handleNotFound);
