@@ -4,12 +4,14 @@ const cors = require('cors');
 const path = require('path');
 const connectDB = require('./config/db');
 const ErrorHandler = require('./middleware/ErrorHandler');
+const RequestLogger = require('./middleware/RequestLogger');
 
 const authRoutes = require('./routes/auth');
 const subjectRoutes = require('./routes/subjects');
 const materialRoutes = require('./routes/materials');
 const quizRoutes = require('./routes/quizzes');
 const progressRoutes = require('./routes/progress');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 
@@ -18,6 +20,7 @@ connectDB();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+app.use(RequestLogger.log);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth', authRoutes);
@@ -25,6 +28,7 @@ app.use('/api/subjects', subjectRoutes);
 app.use('/api/materials', materialRoutes);
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/progress', progressRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', timestamp: new Date() }));
 
